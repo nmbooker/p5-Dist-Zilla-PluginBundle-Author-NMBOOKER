@@ -1,5 +1,6 @@
 requires 'Dist::Zilla::Role::PluginBundle::Easy';
 requires 'Dist::Zilla::PluginBundle::Basic';
+requires 'Dist::Zilla::PluginBundle::Filter';
 requires 'Dist::Zilla::PluginBundle::Git';
 
 requires 'Dist::Zilla::Plugin::Prereqs::FromCPANfile';

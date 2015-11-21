@@ -8,6 +8,7 @@ with 'Dist::Zilla::Role::PluginBundle::Easy';
 our $VERSION = '0.001';
 
 use Dist::Zilla::PluginBundle::Basic;
+use Dist::Zilla::PluginBundle::Filter;
 use Dist::Zilla::PluginBundle::Git;
 
 sub configure {
@@ -17,7 +18,10 @@ sub configure {
         Git::GatherDir
         Prereqs::FromCPANfile
     ));
-    $self->add_bundle('@Basic');
+    $self->add_bundle('@Filter', {
+        '-bundle' => '@Basic',
+        '-remove' => [ 'GatherDir', 'TestRelease', ],
+    });
 
     $self->add_plugins(qw(
         AutoPrereqs
