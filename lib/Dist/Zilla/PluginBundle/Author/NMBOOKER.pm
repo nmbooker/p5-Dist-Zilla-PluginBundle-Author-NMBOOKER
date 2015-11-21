@@ -5,7 +5,7 @@ package Dist::Zilla::PluginBundle::Author::NMBOOKER;
 use Moose;
 with 'Dist::Zilla::Role::PluginBundle::Easy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use Dist::Zilla::PluginBundle::Basic;
 use Dist::Zilla::PluginBundle::Filter;
