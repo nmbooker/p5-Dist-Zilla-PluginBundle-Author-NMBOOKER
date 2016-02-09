@@ -14,8 +14,9 @@ use Dist::Zilla::PluginBundle::Git;
 sub configure {
     my ($self) = @_;
 
-    $self->add_plugins(qw(
-        Git::GatherDir
+    $self->add_plugins(
+        [ 'Git::GatherDir' => { exclude_filename => [qw/README LICENSE/] } ],
+    qw(
         Prereqs::FromCPANfile
     ));
     $self->add_bundle('@Filter', {
@@ -45,7 +46,10 @@ sub configure {
         [ PodWeaver => { finder => ':InstallModules' } ],
         [ 'Git::Commit' =>
             CommitGeneratedFiles => { 
-                allow_dirty => [ qw/dist.ini Changes cpanfile LICENSE/ ]
+                allow_dirty => [ 
+                    qw/dist.ini Changes cpanfile LICENSE/,
+                    qw/README/
+                ]
         } ],
         'ExecDir',
         [ ExecDir =>
